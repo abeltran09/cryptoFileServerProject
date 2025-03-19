@@ -1,15 +1,17 @@
 # cryptoFileServerProject
 
 ## Overview
-A brief description of the project goes here. Explain its purpose and key features.
+The Github repo is to organize and collectively work on our File Server Cryptography Project. 
 
 ## Getting Started
+To ensure that we are able to work seemlessly on this project without running into any dependency issues we will use a virtual environment that upon activating it will share all the dependencies between us. 
+There is some documentation on how to get started with virtual environments and how to activate it. 
+There is also docuementation on how our github workflow should work so that we don't run into any issues when merging code.
 
 ### Prerequisites
 Ensure you have the following installed on your system:
 - Python 3.11
 - Git
-- Virtual Environment (venv)
 
 ### Setup
 
@@ -19,7 +21,7 @@ git clone https://github.com/abeltran09/cryptoFileServerProject.git
 cd project
 ```
 
-#### 2. Create and Activate Virtual Environment
+#### 2. Activate Virtual Environment
 
 **Windows:**
 ```sh
@@ -30,6 +32,7 @@ venv\Scripts\activate
 ```sh
 pip install -r requirements.txt
 ```
+Note: If you install new libraries, make sure to add them to requirements.txt with their version
 
 ## Git Workflow
 
@@ -58,6 +61,7 @@ git push origin feature-branch-name
 - Click on "New Pull Request."
 - Select your branch and request a review from the team.
 - Once approved, merge into `main`.
+- If you install new libraries, add them to requirements.txt
 
 #### 5. Sync with Main Branch
 Before starting new work, always update your local `main` branch.
