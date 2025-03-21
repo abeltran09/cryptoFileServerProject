@@ -1,0 +1,34 @@
+{
+    "users": {
+        "admin": {
+            "username": "admin",
+            "role": "admin",
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiZ3JvdXBzIjpbIi4vQURNSU4iXSwicGVybWlzc2lvbnMiOlsidmlldyIsInVwbG9hZCIsImRvd25sb2FkIl0sImZpbGVfc2VydmVyX2lkcyI6W119.1QHGw2sbwrIw_mx3lLbjF97R19LEyBgP9Tai4mesVg4"
+        },
+        "angel": {
+            "username": "angel",
+            "role": "user",
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFuZ2VsIiwiZ3JvdXBzIjpbXSwicGVybWlzc2lvbnMiOltdLCJmaWxlX3NlcnZlcl9pZHMiOltdfQ.MzzGuhHpUySOZ8PKSMJKZK7k3oOurWncRZFDvCG6ciI"
+        }
+    },
+    "group_servers": {
+        "./ADMIN": {
+            "name": "./ADMIN",
+            "owner": "admin",
+            "members": [
+                "admin"
+            ],
+            "file_server_ids": [
+                "file-201"
+            ]
+        }
+    },
+    "file_servers": {
+        "file-201": {
+            "file_server_id": "file-201",
+            "name": "Admin File Server",
+            "group_id": "group-101",
+            "files": {}
+        }
+    }
+}
