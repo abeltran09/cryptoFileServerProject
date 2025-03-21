@@ -1,0 +1,78 @@
+{
+    "users": {
+        "admin": {
+            "user_id": "user-001",
+            "username": "admin",
+            "password": "hashed_password",
+            "role": "admin",
+            "token": "jwt_token_here"
+        },
+        "user1": {
+            "user_id": "user-002",
+            "username": "user1",
+            "password": "hashed_password",
+            "role": "user",
+            "token": "jwt_token_here"
+        }
+    },
+    "group_servers": {
+        "group-101": {
+            "group_id": "group-101",
+            "name": "Admin Group",
+            "owner": "user-001",
+            "members": ["user-001", "user-002"],
+            "file_server_ids": ["file-201", "file-202"]
+        },
+        "group-102": {
+            "group_id": "group-102",
+            "name": "User Group",
+            "owner": "user-002",
+            "members": ["user-002"],
+            "file_server_ids": ["file-203"]
+        }
+    },
+    "file_servers": {
+        "file-201": {
+            "file_server_id": "file-201",
+            "name": "Admin File Server 1",
+            "group_id": "group-101",
+            "files": {
+                "file1.txt": {
+                    "owner": "user-001",
+                    "permissions": {
+                        "user-001": ["view", "upload", "download"],
+                        "user-002": ["view"]
+                    }
+                }
+            }
+        },
+        "file-202": {
+            "file_server_id": "file-202",
+            "name": "Admin File Server 2",
+            "group_id": "group-101",
+            "files": {}
+        },
+        "file-203": {
+            "file_server_id": "file-203",
+            "name": "User File Server",
+            "group_id": "group-102",
+            "files": {}
+        }
+    },
+    "tokens": {
+        "user-001": {
+            "user": "admin",
+            "groups": ["group-101"],
+            "permissions": ["view", "upload", "download"],
+            "file_server_ids": ["file-201", "file-202"],
+            "expires_at": "2025-03-21T12:00:00Z"
+        },
+        "user-002": {
+            "user": "user1",
+            "groups": ["group-101", "group-102"],
+            "permissions": ["view"],
+            "file_server_ids": ["file-201", "file-203"],
+            "expires_at": "2025-03-21T12:00:00Z"
+        }
+    }
+}
