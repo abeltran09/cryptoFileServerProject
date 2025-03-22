@@ -21,6 +21,15 @@
             "file_server_ids": [
                 "file-201"
             ]
+        },
+        "./CODERS": {
+            "name": "./CODERS",
+            "owner": "angel",
+            "members": [
+                "angel",
+                "admin"
+            ],
+            "file_server_ids": []
         }
     },
     "file_servers": {
