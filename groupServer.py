@@ -61,7 +61,7 @@ class GroupServer(threading.Thread):
         try:
             decoded_token = decodeToken(userToken)
             if "./ADMIN" not in decoded_token["groups"]:
-                return {"status": "failed", "message": f"User: {username} is not in the ./ADMIN group"}
+                return {"status": "failed", "message": f"User: {decoded_token['username']} is not in the ./ADMIN group"}
 
             token_payload = createTokenPayload(username)
             token = generateToken(token_payload)
@@ -80,15 +80,28 @@ class GroupServer(threading.Thread):
         decoded_token = decodeToken(token)
         if group_name in self.data["group_servers"]:
             return {"status": "failed", "message": f"group already exist try another name"}
-
         group_payload = createGroupPayload(group_name, token)
         self.data["group_servers"].update(group_payload)
         save_data(self.data)
         return {"status": "success", "message": f"Group: {group_name} has been created by group owner {decoded_token.get('username')}"}
 
 
+
     def add_user_to_group(self, username, group_name, token):
-        pass
+        decoded_token = decodeToken(token)
+        if self.data["group_servers"][group_name]["owner"] != decoded_token.get("username"):
+            return {"status": "failed", "message": f"Owner of token and group server owner don't match"}
+        elif group_name not in self.data["group_servers"]:
+            return {"status": "failed", "message": f"Group does not exist"}
+        elif username not in self.data["users"]:
+            return {"status": "failed", "message": f"User: {username} does not exist, create user first"}
+        elif username in self.data["group_servers"][group_name]["members"]:
+            return {"status": "failed", "message": f"User: {username} already in group {group_name}"}
+
+        self.data["group_servers"][group_name]["members"].append(username)
+        save_data(self.data)
+        return {"status": "success", "message": f"User: {username} added to group {group_name}"}
+
 
     def list_members(self, group_name, token):
         decoded_token = decodeToken(token)
