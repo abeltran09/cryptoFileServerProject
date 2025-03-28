@@ -4,8 +4,10 @@ import threading
 import time
 import uuid
 import logging
-from dataHandler import load_data, save_data, createUserPayload, createGroupPayload
-from tokenHandler import generateToken, decodeToken, createTokenPayload
+from dataHandler import load_data, save_data, createUserPayload, createGroupPayload, addGroupToToken
+from tokenHandler import generateToken, decodeToken, createTokenPayload, updateTokenExpiration
+from datetime import datetime
+import os
 
 logging.basicConfig(level=logging.ERROR)
 
@@ -51,7 +53,18 @@ class GroupServer(threading.Thread):
         try:
             if username not in self.data["users"]:
                 return {"status": "failed", "message": "username Entered Does not exist"}
-            elif username in self.data["users"] and self.data["users"][username].get("token"):
+            if self.data["users"][username]["token"] != "":
+                token = self.data["users"][username]["token"]
+                new_token = updateTokenExpiration(token)
+                self.data["users"][username]["token"] = new_token
+                save_data(self.data)
+                return {"status": "success", "token": self.data["users"][username].get("token")}
+
+            else:
+                token_payload = createTokenPayload(username)
+                token = generateToken(token_payload)
+                self.data["users"][username]["token"] = token
+                save_data(self.data)
                 return {"status": "success", "token": self.data["users"][username].get("token")}
         except Exception as e:
             logging.error(f"Unexpected error: {e}")
@@ -60,13 +73,12 @@ class GroupServer(threading.Thread):
     def create_user(self, username, userToken):
         try:
             decoded_token = decodeToken(userToken)
-            if "./ADMIN" not in decoded_token["groups"]:
+            if datetime.fromisoformat(decoded_token["expires_at"]) < datetime.utcnow():
+                return {"status": "failed", "message": f"token has expired"}
+            elif "./ADMIN" not in decoded_token["groups"]:
                 return {"status": "failed", "message": f"User: {decoded_token['username']} is not in the ./ADMIN group"}
 
-            token_payload = createTokenPayload(username)
-            token = generateToken(token_payload)
-
-            user_payload = createUserPayload(username, token)
+            user_payload = createUserPayload(username)
 
             self.data["users"].update(user_payload)
             save_data(self.data)
@@ -78,18 +90,31 @@ class GroupServer(threading.Thread):
 
     def create_group(self, group_name, token):
         decoded_token = decodeToken(token)
-        if group_name in self.data["group_servers"]:
+        if datetime.fromisoformat(decoded_token["expires_at"]) < datetime.utcnow():
+            return {"status": "failed", "message": f"token has expired, generate new token"}
+        elif group_name in self.data["group_servers"]:
             return {"status": "failed", "message": f"group already exist try another name"}
         group_payload = createGroupPayload(group_name, token)
         self.data["group_servers"].update(group_payload)
+        updated_token = addGroupToToken(decoded_token, group_name)
+        encoded_updated_token = generateToken(updated_token)
+        self.data["users"][decoded_token["username"]]["token"] = encoded_updated_token
         save_data(self.data)
+        try:
+            os.makedirs(group_name)
+            print(f"{group_name} created successfully")
+        except FileExistsError:
+            print(f"{group_name} already exists")
+        except FileNotFoundError:
+            print("Parent directory not found")
+
         return {"status": "success", "message": f"Group: {group_name} has been created by group owner {decoded_token.get('username')}"}
-
-
 
     def add_user_to_group(self, username, group_name, token):
         decoded_token = decodeToken(token)
-        if self.data["group_servers"][group_name]["owner"] != decoded_token.get("username"):
+        if datetime.fromisoformat(decoded_token["expires_at"]) < datetime.utcnow():
+            return {"status": "failed", "message": f"token has expired"}
+        elif self.data["group_servers"][group_name]["owner"] != decoded_token.get("username"):
             return {"status": "failed", "message": f"Owner of token and group server owner don't match"}
         elif group_name not in self.data["group_servers"]:
             return {"status": "failed", "message": f"Group does not exist"}
@@ -99,13 +124,21 @@ class GroupServer(threading.Thread):
             return {"status": "failed", "message": f"User: {username} already in group {group_name}"}
 
         self.data["group_servers"][group_name]["members"].append(username)
+        # get user being added to group token
+        user_token = self.data["users"][username]["token"]
+        user_decoded_token = decodeToken(user_token)
+        updated_token = addGroupToToken(user_decoded_token, group_name)
+        encoded_updated_token = generateToken(updated_token)
+        self.data["users"][user_decoded_token["username"]]["token"] = encoded_updated_token
         save_data(self.data)
         return {"status": "success", "message": f"User: {username} added to group {group_name}"}
 
 
     def list_members(self, group_name, token):
         decoded_token = decodeToken(token)
-        if group_name not in self.data["group_servers"]:
+        if datetime.fromisoformat(decoded_token["expires_at"]) < datetime.utcnow():
+            return {"status": "failed", "message": f"token has expired"}
+        elif group_name not in self.data["group_servers"]:
             return {"status": "failed", "message": f"group name: {group_name} does not exist"}
         elif self.data["group_servers"][group_name]["owner"] != decoded_token.get("username"):
             return {"status": "failed", "message": f"Owner of token and group server owner don't match"}

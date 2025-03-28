@@ -16,12 +16,12 @@ def save_data(data):
         json.dump(data, f, indent=4)
 
 
-def createUserPayload(username, userToken):
+def createUserPayload(username):
     payload = {
         username: {
             "username": username,
             "role": "user",
-            "token": userToken
+            "token": ""
         }
     }
     return payload
@@ -39,3 +39,7 @@ def createGroupPayload(groupname, usertoken):
         }
     }
     return payload
+
+def addGroupToToken(token, group_name):
+    token["groups"].append(group_name)
+    return token
