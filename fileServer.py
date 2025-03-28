@@ -4,6 +4,7 @@ import json
 import os
 from tokenHandler import decodeToken
 from dataHandler import load_data
+from datetime import datetime
 
 FILE_STORAGE = "server_files/" #folder for the file uploads
 
@@ -13,7 +14,7 @@ class FileServer(threading.Thread):
         threading.Thread.__init__(self)
         self.conn=conn
         self.addr=addr
-        self.data = load_data()
+        self.data=load_data()
         print(f"New File Server connection from {addr}")
 
     def run(self):
@@ -35,7 +36,10 @@ class FileServer(threading.Thread):
 
         #decodes tokenget
         user_data = decodeToken(token)
-        if "status" in user_data and user_data["status"] == "error":
+        print(user_data)
+        if datetime.fromisoformat(user_data["expires_at"]) < datetime.utcnow():
+            return {"status": "failed", "message": "User Token Expired"}
+        elif "status" in user_data and user_data["status"] == "error":
             return {"status": "error", "message": user_data["message"]}
 
         #handles different file server actions
@@ -60,13 +64,13 @@ class FileServer(threading.Thread):
     def upload_file(self, request ,user_data ):
     #uploads the file to the server if the user belongs to the group
         group = request.get("group")
-        group=self.data["group_servers"]
+        dest_dir = request.get("dest_file")
         if group not in user_data["groups"]:
             return {"status": "error", "message": "You dont have permissions"}
 
         try:
             source_file = request.get("source_file")
-            dest_file = f"{FILE_STORAGE}{group}_{request.get('dest_file')}"
+            dest_file = f"{dest_dir}{group}_{request.get('dest_file')}"
 
             with open(dest_file, "wb") as f:
                 f.write(request.get("file_data").encode())

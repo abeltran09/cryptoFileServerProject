@@ -3,12 +3,12 @@
         "admin": {
             "username": "admin",
             "role": "admin",
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiZ3JvdXBzIjpbIi4vQURNSU4iXSwicGVybWlzc2lvbnMiOlsidmlldyIsInVwbG9hZCIsImRvd25sb2FkIl0sImZpbGVfc2VydmVyX2lkcyI6W119.1QHGw2sbwrIw_mx3lLbjF97R19LEyBgP9Tai4mesVg4"
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiZ3JvdXBzIjpbIi4vSEFDS0VSUyJdLCJwZXJtaXNzaW9ucyI6W10sImZpbGVfc2VydmVyX2lkcyI6W10sImV4cGlyZXNfYXQiOiIyMDI1LTAzLTI3VDE4OjUwOjU2LjMzNjE1MCJ9.oUP--9ZJiBh6ruyhvcVsPcPs0N8NmnVSiVLoTQuFZB8"
         },
         "angel": {
             "username": "angel",
             "role": "user",
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFuZ2VsIiwiZ3JvdXBzIjpbXSwicGVybWlzc2lvbnMiOltdLCJmaWxlX3NlcnZlcl9pZHMiOltdfQ.MzzGuhHpUySOZ8PKSMJKZK7k3oOurWncRZFDvCG6ciI"
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFuZ2VsIiwiZ3JvdXBzIjpbIi4vQ09ERVJTIl0sInBlcm1pc3Npb25zIjpbXSwiZmlsZV9zZXJ2ZXJfaWRzIjpbXSwiZXhwaXJlc19hdCI6IjIwMjUtMDMtMjhUMTU6NDY6MTguOTc2NDM2In0.ER6s79PM00eVIldu8Y83Dr0fvDulVjhc6yjn2h2ht5k"
         }
     },
     "group_servers": {
@@ -26,8 +26,7 @@
             "name": "./CODERS",
             "owner": "angel",
             "members": [
-                "angel",
-                "admin"
+                "angel"
             ],
             "file_server_ids": []
         }
