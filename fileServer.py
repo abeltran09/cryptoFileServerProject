@@ -36,7 +36,6 @@ class FileServer(threading.Thread):
 
         #decodes tokenget
         user_data = decodeToken(token)
-        print(user_data)
         if datetime.fromisoformat(user_data["expires_at"]) < datetime.utcnow():
             return {"status": "failed", "message": "User Token Expired"}
         elif "status" in user_data and user_data["status"] == "error":
@@ -54,11 +53,15 @@ class FileServer(threading.Thread):
     def list_files(self, user_data):
     #lists all files accessible to user groups
         try:
-            files: [
-                f for f in os.listdir(FILE_STORAGE)
-                if any(group in f for group in user_data["groups"])
-            ]
-            return {"status": "success", "files":files}
+            groups = user_data.get("groups")
+            files_map = {}
+            for group in groups:
+                dir_path = group.lstrip("./")
+                if os.path.isdir(dir_path):
+                    txt_files = [f for f in os.listdir(dir_path)]
+                    files_map[dir_path] = txt_files
+
+            return {"status": "success", "files":files_map}
         except Exception as e:
             return {"status": "error", "message": f"Failed to list files: {e}"}
     def upload_file(self, request ,user_data ):

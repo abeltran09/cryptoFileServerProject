@@ -8,7 +8,7 @@
         "angel": {
             "username": "angel",
             "role": "user",
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFuZ2VsIiwiZ3JvdXBzIjpbIi4vQ09ERVJTIl0sInBlcm1pc3Npb25zIjpbXSwiZmlsZV9zZXJ2ZXJfaWRzIjpbXSwiZXhwaXJlc19hdCI6IjIwMjUtMDMtMjhUMTU6NDY6MTguOTc2NDM2In0.ER6s79PM00eVIldu8Y83Dr0fvDulVjhc6yjn2h2ht5k"
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFuZ2VsIiwiZ3JvdXBzIjpbIi4vQ09ERVJTIl0sInBlcm1pc3Npb25zIjpbXSwiZmlsZV9zZXJ2ZXJfaWRzIjpbXSwiZXhwaXJlc19hdCI6IjIwMjUtMDMtMjhUMjM6NTk6MTAuMDgzNjYxIn0.-OF6VDDi6QR3819cGuLDXqsKw_ziZ8F0hOK0ExG1qE8"
         }
     },
     "group_servers": {
@@ -28,14 +28,12 @@
             "members": [
                 "angel"
             ],
-            "file_server_ids": []
+            "file_server_name": []
         }
     },
     "file_servers": {
         "file-201": {
-            "file_server_id": "file-201",
-            "name": "Admin File Server",
-            "group_id": "group-101",
+            "file_server_name": "file-201",
             "files": {}
         }
     }
