@@ -1,7 +1,7 @@
 import jwt
 from datetime import datetime, timedelta
 
-KEY = "hvgdkvhfcvhqvwfhvqkwfvjkqv"
+KEY = "2LCoB-TMyw4iiQqXoZr6ieml4V4HcuvsV4DltRul_ubqQAijbxZWL6CH_KSKjp6zGU1pdEy5vrX8ySKAmf5evA"
 ALGORITHM = "HS256"
 
 
@@ -51,3 +51,4 @@ payload = {
     "file_server_ids": []
 }
 '''
+

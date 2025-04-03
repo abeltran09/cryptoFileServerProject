@@ -154,7 +154,7 @@ def fileServerMenu():
             response = send_file_request({"action": "list_files", "token": token})
         elif choice == "3" and connected_to_file_server:
             source_file = input("Enter the file to upload: ")
-            dest_file = input("Enter destination filename: ")
+            filename = input("Enter filename: ")
             group = input("Enter group to share with: ")
             token = input("Enter your token: ")
             try:
@@ -163,7 +163,7 @@ def fileServerMenu():
                 response = send_file_request({
                     "action": "upload",
                     "source_file": source_file,
-                    "dest_file": dest_file,
+                    "filename": filename,
                     "file_data": file_data,
                     "group": group,
                     "token": token
