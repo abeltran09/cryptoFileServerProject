@@ -12,9 +12,9 @@ class FileServer(threading.Thread):
     def __init__(self, conn, addr):
 
         threading.Thread.__init__(self)
-        self.conn=conn
-        self.addr=addr
-        self.data=load_data()
+        self.conn = conn
+        self.addr = addr
+        self.data = load_data()
         print(f"New File Server connection from {addr}")
 
     def run(self):
@@ -67,13 +67,14 @@ class FileServer(threading.Thread):
     def upload_file(self, request ,user_data ):
     #uploads the file to the server if the user belongs to the group
         group = request.get("group")
-        dest_dir = request.get("dest_file")
+        dest_group = group.lstrip('./')
         if group not in user_data["groups"]:
-            return {"status": "error", "message": "You dont have permissions"}
+            return {"status": "error", "message": "group entered does not exist"}
 
         try:
             source_file = request.get("source_file")
-            dest_file = f"{dest_dir}{group}_{request.get('dest_file')}"
+            filename = request.get("filename")
+            dest_file = f"{dest_group}/{filename}"
 
             with open(dest_file, "wb") as f:
                 f.write(request.get("file_data").encode())

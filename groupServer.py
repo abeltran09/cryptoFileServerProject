@@ -52,7 +52,7 @@ class GroupServer(threading.Thread):
     def get_token(self, username):
         try:
             if username not in self.data["users"]:
-                return {"status": "failed", "message": "username Entered Does not exist"}
+                return {"status": "failed", "message": "username Entered Does not exist."}
             if self.data["users"][username]["token"] != "":
                 token = self.data["users"][username]["token"]
                 new_token = updateTokenExpiration(token)
@@ -76,7 +76,7 @@ class GroupServer(threading.Thread):
             if datetime.fromisoformat(decoded_token["expires_at"]) < datetime.utcnow():
                 return {"status": "failed", "message": f"token has expired"}
             elif "./ADMIN" not in decoded_token["groups"]:
-                return {"status": "failed", "message": f"User: {decoded_token['username']} is not in the ./ADMIN group"}
+                return {"status": "failed", "message": f"User: {decoded_token['username']} not an admin needs to be in ./ADMIN group"}
 
             user_payload = createUserPayload(username)
 

@@ -3,12 +3,32 @@
         "admin": {
             "username": "admin",
             "role": "admin",
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiZ3JvdXBzIjpbIi4vSEFDS0VSUyJdLCJwZXJtaXNzaW9ucyI6W10sImZpbGVfc2VydmVyX2lkcyI6W10sImV4cGlyZXNfYXQiOiIyMDI1LTAzLTI3VDE4OjUwOjU2LjMzNjE1MCJ9.oUP--9ZJiBh6ruyhvcVsPcPs0N8NmnVSiVLoTQuFZB8"
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiZ3JvdXBzIjpbIi4vQURNSU4iXSwicGVybWlzc2lvbnMiOltdLCJmaWxlX3NlcnZlcl9pZHMiOltdLCJleHBpcmVzX2F0IjoiMjAyNS0wNC0wM1QwNDo1NzowOC43MTI1MzEifQ.mC39_uJ1txmN_zO7CL52xbWP0bjHI5UAd48yaX3fMj8"
         },
         "angel": {
             "username": "angel",
             "role": "user",
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFuZ2VsIiwiZ3JvdXBzIjpbIi4vQ09ERVJTIl0sInBlcm1pc3Npb25zIjpbXSwiZmlsZV9zZXJ2ZXJfaWRzIjpbXSwiZXhwaXJlc19hdCI6IjIwMjUtMDMtMjhUMjM6NTk6MTAuMDgzNjYxIn0.-OF6VDDi6QR3819cGuLDXqsKw_ziZ8F0hOK0ExG1qE8"
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFuZ2VsIiwiZ3JvdXBzIjpbIi4vQ09ERVJTIiwiLi9CUk9USEVSUyJdLCJwZXJtaXNzaW9ucyI6W10sImZpbGVfc2VydmVyX2lkcyI6W10sImV4cGlyZXNfYXQiOiIyMDI1LTA0LTAzVDA2OjIwOjQ0LjczMTMyNiJ9.TogRZih2j-6hhfzvnopwfuX11HiVCzBiz6WXLf3eOIk"
+        },
+        "edwin": {
+            "username": "edwin",
+            "role": "user",
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImVkd2luIiwiZ3JvdXBzIjpbIi4vQ09ERVJTIl0sInBlcm1pc3Npb25zIjpbXSwiZmlsZV9zZXJ2ZXJfaWRzIjpbXSwiZXhwaXJlc19hdCI6IjIwMjUtMDQtMDNUMDU6MDY6MDUuODUwMzc1In0.8aKiqzlHSheKt17a3Bhnq2ja-GRWI_7_g7nM27jm5HU"
+        },
+        "lenard": {
+            "username": "lenard",
+            "role": "user",
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImxlbmFyZCIsImdyb3VwcyI6WyIuL0NPREVSUyJdLCJwZXJtaXNzaW9ucyI6W10sImZpbGVfc2VydmVyX2lkcyI6W10sImV4cGlyZXNfYXQiOiIyMDI1LTA0LTAzVDA1OjA3OjMwLjg5NDY2NiJ9.1TiMw3VvWvvPYuiskCqRC4YPzzguKRluxadtilxU6h4"
+        },
+        "adrian": {
+            "username": "adrian",
+            "role": "user",
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkcmlhbiIsImdyb3VwcyI6WyIuL0JST1RIRVJTIl0sInBlcm1pc3Npb25zIjpbXSwiZmlsZV9zZXJ2ZXJfaWRzIjpbXSwiZXhwaXJlc19hdCI6IjIwMjUtMDQtMDNUMDU6MDc6NTkuODg4NDMxIn0.fjy5cuWcGHJBjdKxCMb29Zzk5tRegFRU7Wg9OKK_lZ8"
+        },
+        "thiago": {
+            "username": "thiago",
+            "role": "user",
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRoaWFnbyIsImdyb3VwcyI6WyIuL0JST1RIRVJTIl0sInBlcm1pc3Npb25zIjpbXSwiZmlsZV9zZXJ2ZXJfaWRzIjpbXSwiZXhwaXJlc19hdCI6IjIwMjUtMDQtMDNUMDU6MDg6MDUuOTE1MDk5In0.OaD_gGiUX0teeU2W1LNB9Nfl66nYSHRQgT2NgcKolJs"
         }
     },
     "group_servers": {
@@ -18,17 +38,27 @@
             "members": [
                 "admin"
             ],
-            "file_server_ids": [
-                "file-201"
-            ]
+            "file_server_ids": []
         },
         "./CODERS": {
             "name": "./CODERS",
             "owner": "angel",
             "members": [
-                "angel"
+                "angel",
+                "edwin",
+                "lenard"
             ],
-            "file_server_name": []
+            "file_server_ids": []
+        },
+        "./BROTHERS": {
+            "name": "./BROTHERS",
+            "owner": "thiago",
+            "members": [
+                "thiago",
+                "angel",
+                "adrian"
+            ],
+            "file_server_ids": []
         }
     },
     "file_servers": {
