@@ -3,12 +3,12 @@
         "admin": {
             "username": "admin",
             "role": "admin",
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiZ3JvdXBzIjpbIi4vQURNSU4iXSwicGVybWlzc2lvbnMiOltdLCJmaWxlX3NlcnZlcl9pZHMiOltdLCJleHBpcmVzX2F0IjoiMjAyNS0wNC0wM1QwNDo1NzowOC43MTI1MzEifQ.mC39_uJ1txmN_zO7CL52xbWP0bjHI5UAd48yaX3fMj8"
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiZ3JvdXBzIjpbIi4vQURNSU4iLCIuL0hBQ0tFUlMiXSwicGVybWlzc2lvbnMiOltdLCJmaWxlX3NlcnZlcl9pZHMiOltdLCJleHBpcmVzX2F0IjoiMjAyNS0wNC0wM1QxODozNDoyOS45Mjc2OTYifQ.Mhse-8SaqgzJ6HsxgAW9X0CA5sO_pfX7rZiqp9LjLo4"
         },
         "angel": {
             "username": "angel",
             "role": "user",
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFuZ2VsIiwiZ3JvdXBzIjpbIi4vQ09ERVJTIiwiLi9CUk9USEVSUyJdLCJwZXJtaXNzaW9ucyI6W10sImZpbGVfc2VydmVyX2lkcyI6W10sImV4cGlyZXNfYXQiOiIyMDI1LTA0LTAzVDA2OjIwOjQ0LjczMTMyNiJ9.TogRZih2j-6hhfzvnopwfuX11HiVCzBiz6WXLf3eOIk"
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFuZ2VsIiwiZ3JvdXBzIjpbIi4vQ09ERVJTIiwiLi9CUk9USEVSUyJdLCJwZXJtaXNzaW9ucyI6W10sImZpbGVfc2VydmVyX2lkcyI6W10sImV4cGlyZXNfYXQiOiIyMDI1LTA0LTAzVDE4OjM2OjQwLjc2NzY5NyJ9.S-pVuHvOBTRxxVEFvUkHxb2t8HqcltdlmIc3tGsQ1Rc"
         },
         "edwin": {
             "username": "edwin",
@@ -18,7 +18,7 @@
         "lenard": {
             "username": "lenard",
             "role": "user",
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImxlbmFyZCIsImdyb3VwcyI6WyIuL0NPREVSUyJdLCJwZXJtaXNzaW9ucyI6W10sImZpbGVfc2VydmVyX2lkcyI6W10sImV4cGlyZXNfYXQiOiIyMDI1LTA0LTAzVDA1OjA3OjMwLjg5NDY2NiJ9.1TiMw3VvWvvPYuiskCqRC4YPzzguKRluxadtilxU6h4"
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImxlbmFyZCIsImdyb3VwcyI6WyIuL0NPREVSUyJdLCJwZXJtaXNzaW9ucyI6W10sImZpbGVfc2VydmVyX2lkcyI6W10sImV4cGlyZXNfYXQiOiIyMDI1LTA0LTAzVDE4OjMxOjE4LjM1MTE2MyJ9.5Jd7kfKRqtKsBvdrbyaiig68iRIK0MJ2uOdJrqv_zNU"
         },
         "adrian": {
             "username": "adrian",
@@ -28,7 +28,12 @@
         "thiago": {
             "username": "thiago",
             "role": "user",
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRoaWFnbyIsImdyb3VwcyI6WyIuL0JST1RIRVJTIl0sInBlcm1pc3Npb25zIjpbXSwiZmlsZV9zZXJ2ZXJfaWRzIjpbXSwiZXhwaXJlc19hdCI6IjIwMjUtMDQtMDNUMDU6MDg6MDUuOTE1MDk5In0.OaD_gGiUX0teeU2W1LNB9Nfl66nYSHRQgT2NgcKolJs"
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRoaWFnbyIsImdyb3VwcyI6WyIuL0JST1RIRVJTIl0sInBlcm1pc3Npb25zIjpbXSwiZmlsZV9zZXJ2ZXJfaWRzIjpbXSwiZXhwaXJlc19hdCI6IjIwMjUtMDQtMDNUMTg6MDE6MjAuNjAxOTkyIn0.fEIpf8t8CEf-SPtTJSjBVJajB-RrVdTO3V0CYXeie-k"
+        },
+        "khalid": {
+            "username": "khalid",
+            "role": "user",
+            "token": ""
         }
     },
     "group_servers": {
@@ -57,6 +62,14 @@
                 "thiago",
                 "angel",
                 "adrian"
+            ],
+            "file_server_ids": []
+        },
+        "./HACKERS": {
+            "name": "./HACKERS",
+            "owner": "admin",
+            "members": [
+                "admin"
             ],
             "file_server_ids": []
         }
