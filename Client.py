@@ -1,5 +1,6 @@
 import socket
 import json
+import pyperclip
 
 # Global variable to track connection state
 connected_to_group_server = False
@@ -67,11 +68,15 @@ def groupServerMenu():
         elif choice == "2" and connected_to_group_server:
             username = input("Enter your username: ")
             response = send_request({"action": "get_token", "username": username})
+            if response["status"] == "success":
+                pyperclip.copy(response["token"])
+                print("Token copied to clipboard!")
         elif choice == "3" and connected_to_group_server:
             username = input("Enter new username: ")
+            email = input("Enter new email: ")
             token = input("Enter admin token: ")
             response = send_request(
-                {"action": "create_user", "username": username, "token": token})
+                {"action": "create_user", "username": username, "email": email, "token": token})
         elif choice == "4" and connected_to_group_server:
             group_name = input("Enter group name: ")
             token = input("Enter your token: ")

@@ -3,70 +3,22 @@
         "admin": {
             "username": "admin",
             "role": "admin",
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiZ3JvdXBzIjpbIi4vQURNSU4iLCIuL0hBQ0tFUlMiXSwicGVybWlzc2lvbnMiOltdLCJmaWxlX3NlcnZlcl9pZHMiOltdLCJleHBpcmVzX2F0IjoiMjAyNS0wNC0wM1QxODozNDoyOS45Mjc2OTYifQ.Mhse-8SaqgzJ6HsxgAW9X0CA5sO_pfX7rZiqp9LjLo4"
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiZ3JvdXBzIjpbIi4vQURNSU4iLCIuL0hBQ0tFUlMiXSwicGVybWlzc2lvbnMiOltdLCJmaWxlX3NlcnZlcl9pZHMiOltdLCJleHBpcmVzX2F0IjoiMjAyNS0wNC0yNFQwNToxMDo0OS41NjMxODMifQ.fFazV33gGIiASSuLby7yc5XPwewZJk9AYFk1lUXYlzA"
         },
         "angel": {
             "username": "angel",
+            "email": "aabeltran5910@gmail.com",
             "role": "user",
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFuZ2VsIiwiZ3JvdXBzIjpbIi4vQ09ERVJTIiwiLi9CUk9USEVSUyJdLCJwZXJtaXNzaW9ucyI6W10sImZpbGVfc2VydmVyX2lkcyI6W10sImV4cGlyZXNfYXQiOiIyMDI1LTA0LTAzVDE4OjM2OjQwLjc2NzY5NyJ9.S-pVuHvOBTRxxVEFvUkHxb2t8HqcltdlmIc3tGsQ1Rc"
-        },
-        "edwin": {
-            "username": "edwin",
-            "role": "user",
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImVkd2luIiwiZ3JvdXBzIjpbIi4vQ09ERVJTIl0sInBlcm1pc3Npb25zIjpbXSwiZmlsZV9zZXJ2ZXJfaWRzIjpbXSwiZXhwaXJlc19hdCI6IjIwMjUtMDQtMDNUMDU6MDY6MDUuODUwMzc1In0.8aKiqzlHSheKt17a3Bhnq2ja-GRWI_7_g7nM27jm5HU"
-        },
-        "lenard": {
-            "username": "lenard",
-            "role": "user",
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImxlbmFyZCIsImdyb3VwcyI6WyIuL0NPREVSUyJdLCJwZXJtaXNzaW9ucyI6W10sImZpbGVfc2VydmVyX2lkcyI6W10sImV4cGlyZXNfYXQiOiIyMDI1LTA0LTAzVDE4OjMxOjE4LjM1MTE2MyJ9.5Jd7kfKRqtKsBvdrbyaiig68iRIK0MJ2uOdJrqv_zNU"
-        },
-        "adrian": {
-            "username": "adrian",
-            "role": "user",
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkcmlhbiIsImdyb3VwcyI6WyIuL0JST1RIRVJTIl0sInBlcm1pc3Npb25zIjpbXSwiZmlsZV9zZXJ2ZXJfaWRzIjpbXSwiZXhwaXJlc19hdCI6IjIwMjUtMDQtMDNUMDU6MDc6NTkuODg4NDMxIn0.fjy5cuWcGHJBjdKxCMb29Zzk5tRegFRU7Wg9OKK_lZ8"
-        },
-        "thiago": {
-            "username": "thiago",
-            "role": "user",
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRoaWFnbyIsImdyb3VwcyI6WyIuL0JST1RIRVJTIl0sInBlcm1pc3Npb25zIjpbXSwiZmlsZV9zZXJ2ZXJfaWRzIjpbXSwiZXhwaXJlc19hdCI6IjIwMjUtMDQtMDNUMTg6MDE6MjAuNjAxOTkyIn0.fEIpf8t8CEf-SPtTJSjBVJajB-RrVdTO3V0CYXeie-k"
-        },
-        "khalid": {
-            "username": "khalid",
-            "role": "user",
-            "token": ""
+            "hashed_password": "JDJiJDEyJGw2WFVvd3dabjFEaTFSUzdjY3BwTXVBalhURnhzZnIzR3NzcHRTL2dPcllXOThxM0lEbUs2",
+            "token": "",
+            "temp_token": "",
+            "created_by": "admin",
+            "created_at": "2025-04-24T04:41:21.497504"
         }
     },
     "group_servers": {
         "./ADMIN": {
             "name": "./ADMIN",
-            "owner": "admin",
-            "members": [
-                "admin"
-            ],
-            "file_server_ids": []
-        },
-        "./CODERS": {
-            "name": "./CODERS",
-            "owner": "angel",
-            "members": [
-                "angel",
-                "edwin",
-                "lenard"
-            ],
-            "file_server_ids": []
-        },
-        "./BROTHERS": {
-            "name": "./BROTHERS",
-            "owner": "thiago",
-            "members": [
-                "thiago",
-                "angel",
-                "adrian"
-            ],
-            "file_server_ids": []
-        },
-        "./HACKERS": {
-            "name": "./HACKERS",
             "owner": "admin",
             "members": [
                 "admin"
