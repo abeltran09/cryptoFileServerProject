@@ -2,18 +2,12 @@
     "users": {
         "admin": {
             "username": "admin",
+            "email": "pcrypto43@gmail.com",
             "role": "admin",
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiZ3JvdXBzIjpbIi4vQURNSU4iLCIuL0hBQ0tFUlMiXSwicGVybWlzc2lvbnMiOltdLCJmaWxlX3NlcnZlcl9pZHMiOltdLCJleHBpcmVzX2F0IjoiMjAyNS0wNC0yNFQwNToxMDo0OS41NjMxODMifQ.fFazV33gGIiASSuLby7yc5XPwewZJk9AYFk1lUXYlzA"
-        },
-        "angel": {
-            "username": "angel",
-            "email": "aabeltran5910@gmail.com",
-            "role": "user",
-            "hashed_password": "JDJiJDEyJGw2WFVvd3dabjFEaTFSUzdjY3BwTXVBalhURnhzZnIzR3NzcHRTL2dPcllXOThxM0lEbUs2",
-            "token": "",
-            "temp_token": "",
-            "created_by": "admin",
-            "created_at": "2025-04-24T04:41:21.497504"
+            "hashed_password": "JDJiJDEyJDdtOG9OS2VWTTVNVnBKSGhyVGRhc3VoOG5MeHJXaWxVdVQ4b1dvNHJXOHJQeXNkdjMwRDBH",
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiZ3JvdXBzIjpbIi4vQURNSU4iLCIuL0hBQ0tFUlMiXSwicGVybWlzc2lvbnMiOltdLCJmaWxlX3NlcnZlcl9pZHMiOltdLCJleHBpcmVzX2F0IjoiMjAyNS0wNC0yNVQwNDo0OToyMy4zNzk1ODkifQ.WDpfd7BTS-zvKxF1yS6uk2gMifDIY6Yhgiv87Nb7wS4",
+            "temp_token":"",
+            "created_by": ""
         }
     },
     "group_servers": {

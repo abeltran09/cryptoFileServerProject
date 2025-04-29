@@ -1,6 +1,8 @@
 import socket
 import json
 import pyperclip
+from dataHandler import load_data
+from auth import verify_password, MFA
 
 # Global variable to track connection state
 connected_to_group_server = False
@@ -9,14 +11,27 @@ connected_to_file_server = False
 file_socket = None #different socket
 
 def connect_to_group_server():
+    data = load_data()
     global connected_to_group_server, client_socket
-    try:
-        client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        client_socket.connect(("localhost", 5000))
-        connected_to_group_server = True
-        return {"status": "success", "message": "Connected to Group Server"}
-    except Exception as e:
-        return {"status": "error", "message": f"Connection failed: {e}"}
+    username = input("Enter username: ")
+    password = input("Enter password: ")
+
+    if username not in data["users"]:
+        return {"status" : "failed", "message" : "User does not exist"}
+
+    if verify_password(password, data["users"][username]["hashed_password"]):
+        if MFA(data["users"][username]["email"]):
+            try:
+                client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                client_socket.connect(("localhost", 5000))
+                connected_to_group_server = True
+                return {"status": "success", "message": "Connected to Group Server"}
+            except Exception as e:
+                return {"status": "error", "message": f"Connection failed: {e}"}
+        else:
+            return {"status": "failed", "message": "MFA failed"}
+    else:
+        return {"status": "failed", "message": "Incorrect password"}
 
 
 def send_request(request):

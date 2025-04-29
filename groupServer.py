@@ -128,7 +128,7 @@ class GroupServer(threading.Thread):
             """
 
             yag = yagmail.SMTP('pcrypto43@gmail.com', 'jesv fgwl opww geee')
-            yag.send(to='aabeltran5910@gmail.com', subject='Password Setup', contents=body)
+            yag.send(to=email, subject='Password Setup', contents=body)
 
             logging.info(f"Password setup email sent to {email}")
             return True
