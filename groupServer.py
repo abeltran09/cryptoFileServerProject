@@ -65,6 +65,7 @@ class GroupServer(threading.Thread):
 
             else:
                 token_payload = createTokenPayload(username)
+                token_payload["iss"]="GroupServer"
                 token = generateToken(token_payload)
                 self.data["users"][username]["token"] = token
                 save_data(self.data)

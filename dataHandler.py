@@ -10,8 +10,10 @@ def load_data():
         with open(DATA_FILE, "r") as f:
             return json.load(f)
     except FileNotFoundError:
-        with open(START_FILE, "w") as f:
-            return json.load(f)
+        with open(START_FILE, "r") as f:
+            data=json.load(f)
+        save_data(data)
+        return json.load(f)
 def save_data(data):
     with open(DATA_FILE, "w") as f:
         json.dump(data, f, indent=4)
@@ -28,6 +30,7 @@ def createUserPayload(username, email, admin):
             "temp_token": "",
             "created_by": admin,
             "created_at": datetime.utcnow().isoformat()
+            #"iss":"GroupServer"
         }
     }
     return payload
