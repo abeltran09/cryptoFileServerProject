@@ -8,6 +8,9 @@ from dataHandler import load_data, save_data, createUserPayload, createGroupPayl
 from tokenHandler import generateToken, decodeToken, createTokenPayload, updateTokenExpiration
 from datetime import datetime
 import os
+import secrets
+import yagmail
+import auth
 
 logging.basicConfig(level=logging.ERROR)
 
@@ -40,7 +43,7 @@ class GroupServer(threading.Thread):
         elif action == "get_token":
             return self.get_token(request.get("username"))
         elif action == "create_user":
-            return self.create_user(request.get("username"), request.get("token"))
+            return self.create_user(request.get("username"), request.get("email"), request.get("token"))
         elif action == "create_group":
             return self.create_group(request.get("group_name"), request.get("token"))
         elif action == "add_user_to_group":
@@ -62,6 +65,7 @@ class GroupServer(threading.Thread):
 
             else:
                 token_payload = createTokenPayload(username)
+                token_payload["iss"]="GroupServer"
                 token = generateToken(token_payload)
                 self.data["users"][username]["token"] = token
                 save_data(self.data)
@@ -70,22 +74,69 @@ class GroupServer(threading.Thread):
             logging.error(f"Unexpected error: {e}")
             return {"status": "failed", "message": "failed to get token"}
 
-    def create_user(self, username, userToken):
+    def create_user(self, username, email, userToken):
         try:
             decoded_token = decodeToken(userToken)
             if datetime.fromisoformat(decoded_token["expires_at"]) < datetime.utcnow():
                 return {"status": "failed", "message": f"token has expired"}
             elif "./ADMIN" not in decoded_token["groups"]:
-                return {"status": "failed", "message": f"User: {decoded_token['username']} not an admin needs to be in ./ADMIN group"}
+                return {"status": "failed",
+                        "message": f"User: {decoded_token['username']} not an admin needs to be in ./ADMIN group"}
 
-            user_payload = createUserPayload(username)
+            # Generate temporary token
+            temp_token = secrets.token_urlsafe(16)
+
+            user_payload = createUserPayload(username, email, decoded_token.get("username"))
+            # Add temp token to the user payload
+            user_payload[username]["temp_token"] = temp_token
+            plain_temp_password = str(username+"1")
+            temp_password_hash = auth.hash_password(plain_temp_password.encode('utf-8'))
+            user_payload[username]["hashed_password"] = temp_password_hash
 
             self.data["users"].update(user_payload)
             save_data(self.data)
-            return {"status": "success", "message": f"User: {username} has been created by {decoded_token.get('username')}"}
+
+            password_url = f"http://localhost:8000/change-password?username={username}&temp_token={temp_token}"
+
+            email_sent = self.send_email_to_user(email, username, plain_temp_password, password_url)
+
+            return {
+                "status": "success",
+                "message": f"User: {username} has been created by {decoded_token.get('username')}",
+                "password_url": password_url  # Return this URL to the admin
+            }
         except Exception as e:
             logging.error(f"Unexpected error: {e}")
             return {"status": "failed", "message": "failed to create user"}
+
+    def send_email_to_user(self, email, username, plain_temp_password, setup_url):
+        """Send password setup email to new user using Gmail"""
+        try:
+            # Email body
+            body = f"""
+            Hello {username},
+
+            An account has been created for you with temp password: {plain_temp_password}. Please set up your password by clicking the link below:
+
+            {setup_url}
+
+            This link will expire in 24 hours.
+
+            If you did not request this account, please ignore this email.
+
+            Thank you,
+            The System Administrator
+            """
+
+            yag = yagmail.SMTP('pcrypto43@gmail.com', 'jesv fgwl opww geee')
+            yag.send(to=email, subject='Password Setup', contents=body)
+
+            logging.info(f"Password setup email sent to {email}")
+            return True
+
+        except Exception as e:
+            logging.error(f"Failed to send email: {str(e)}")
+            return False
 
 
     def create_group(self, group_name, token):
