@@ -4,7 +4,7 @@
             "username": "admin",
             "email": "venturae353@gmail.com",
             "role": "admin",
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJHcm91cFNlcnZlciIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlcyI6ImFkbWluIiwiZ3JvdXBzIjpbXSwicGVybWlzc2lvbnMiOlsiY3JlYXRlX3VzZXJzIiwidmlldyIsInVwbG9hZCIsImRvd25sb2FkIl0sImZpbGVfc2VydmVyX2lkcyI6W10sImV4cCI6MTc0NjEwNTMyN30.DTOKDMBMYlNCAk5YTmMWX-hp2_wsI_LU1LBanTuOHiQ"
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJHcm91cFNlcnZlciIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlcyI6ImFkbWluIiwiZ3JvdXBzIjpbXSwicGVybWlzc2lvbnMiOlsiY3JlYXRlX3VzZXJzIiwidmlldyIsInVwbG9hZCIsImRvd25sb2FkIl0sImZpbGVfc2VydmVyX2lkcyI6W10sImV4cCI6MTc0NjExMjEwN30._EIZ7Wz0TGgawogQG86uXMeQWOdNIRA-cGcQoMzNE34"
         }
     },
     "group_servers": {
