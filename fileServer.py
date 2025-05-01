@@ -4,7 +4,6 @@ import json
 import os
 from tokenHandler import decodeToken
 from dataHandler import load_data
-from datetime import datetime
 import logging
 
 logging.basicConfig(filename="file_server.log",level=logging.INFO,
@@ -19,6 +18,7 @@ class FileServer(threading.Thread):
         self.conn = conn
         self.addr = addr
         self.data = load_data()
+        print(f"New Connection from {addr}")
         logging.info(f"New File Server connection from {addr}")
 
     def run(self):

@@ -21,6 +21,8 @@ class GroupServer(threading.Thread):
         self.addr = addr
         self.data = load_data()
         print(f"New Connection from {addr}")
+        logging.info(f"New Group Server connection from {addr}")
+
 
     def run(self):
         while True:

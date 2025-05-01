@@ -11,7 +11,7 @@ def load_data():
             return json.load(f)
     except FileNotFoundError:
         with open(START_FILE, "r") as f:
-            data=json.load(f)
+            data = json.load(f)
         save_data(data)
         return json.load(f)
 def save_data(data):

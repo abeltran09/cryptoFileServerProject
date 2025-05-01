@@ -32,14 +32,14 @@ def createTokenPayload(username,role="user", permissions=[]):
             "groups": [],
             "permissions": permissions,
             "file_server_ids": [],
-            "expires_at": expire_date
+            "expires_at": expire_date.isoformat()
             }
     return payload
 
 def updateTokenExpiration(token):
     decoded_token = decodeToken(token)
     new_expire_date = datetime.utcnow() + timedelta(minutes=30)
-    decoded_token["exp"] = new_expire_date
+    decoded_token["expires_at"] = new_expire_date.isoformat()
     encoded_token = generateToken(decoded_token)
     return encoded_token
 

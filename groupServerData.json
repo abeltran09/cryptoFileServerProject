@@ -5,7 +5,7 @@
             "email": "venturae353@gmail.com",
             "role": "admin",
             "hashed_password": "JDJiJDEyJDdtOG9OS2VWTTVNVnBKSGhyVGRhc3VoOG5MeHJXaWxVdVQ4b1dvNHJXOHJQeXNkdjMwRDBH",
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJHcm91cFNlcnZlciIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlcyI6ImFkbWluIiwiZ3JvdXBzIjpbXSwicGVybWlzc2lvbnMiOlsiY3JlYXRlX3VzZXJzIiwidmlldyIsInVwbG9hZCIsImRvd25sb2FkIl0sImZpbGVfc2VydmVyX2lkcyI6W10sImV4cCI6MTc0NjEwNjMzMH0.V40hGb0IX4VDWCUAhgd42zwAmLgxr9J9S5_14aDEvjM",
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJHcm91cFNlcnZlciIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlcyI6ImFkbWluIiwiZ3JvdXBzIjpbXSwicGVybWlzc2lvbnMiOlsidmlldyIsInVwbG9hZCIsImRvd25sb2FkIl0sImZpbGVfc2VydmVyX2lkcyI6W10sImV4cCI6MTc0NjExMTgwNn0.47GerqMMzT47-8wB0RRdbh1xnkz4nIc4XObgbCvjkPc",
             "temp_token": "",
             "created_by": ""
         }
