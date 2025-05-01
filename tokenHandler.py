@@ -32,7 +32,7 @@ def createTokenPayload(username,role="user", permissions=[]):
             "groups": [],
             "permissions": permissions,
             "file_server_ids": [],
-            "exp": expire_date
+            "expires_at": expire_date
             }
     return payload
 

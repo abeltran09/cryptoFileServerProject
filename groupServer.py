@@ -12,7 +12,7 @@ import secrets
 import yagmail
 import auth
 
-logging.basicConfig(level=logging.ERROR)
+logging.basicConfig(level=logging.INFO)
 
 class GroupServer(threading.Thread):
     def __init__(self, conn, addr):

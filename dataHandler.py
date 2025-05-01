@@ -29,8 +29,8 @@ def createUserPayload(username, email, admin):
             "token": "",
             "temp_token": "",
             "created_by": admin,
-            "created_at": datetime.utcnow().isoformat()
-            #"iss":"GroupServer"
+            "created_at": datetime.utcnow().isoformat(),
+            "iss":"GroupServer"
         }
     }
     return payload
