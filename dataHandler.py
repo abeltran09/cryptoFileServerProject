@@ -1,5 +1,6 @@
 import json
 from tokenHandler import decodeToken
+from datetime import datetime
 
 DATA_FILE = "groupServerData.json"
 START_FILE = "dataexample.json"
@@ -18,12 +19,17 @@ def save_data(data):
         json.dump(data, f, indent=4)
 
 
-def createUserPayload(username):
+def createUserPayload(username, email, admin):
     payload = {
         username: {
             "username": username,
+            "email": email,
             "role": "user",
+            "hashed_password": "",
             "token": "",
+            "temp_token": "",
+            "created_by": admin,
+            "created_at": datetime.utcnow().isoformat()
             #"iss":"GroupServer"
         }
     }

@@ -1,20 +1,36 @@
 import socket
+import ssl
 import json
+import threading
+import logging
 
-# Global variable to track connection state
+# Global variables to track connection states
 connected_to_group_server = False
 client_socket = None
 connected_to_file_server = False
-file_socket = None #different socket
+file_socket = None  # Different socket for file server
+
+# Set up logging for better error tracking
+logging.basicConfig(level=logging.INFO)
+
 
 def connect_to_group_server():
     global connected_to_group_server, client_socket
     try:
+        # Create the raw socket
         client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        client_socket.connect(("localhost", 5000))
+
+        # Wrap the socket with TLS/SSL using SSLContext and the server's certs
+        context = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2)  # Force TLSv1.2 for compatibility
+        context.load_cert_chain(certfile="server.crt", keyfile="server.key")  # Adjust to your cert path
+        client_socket = context.wrap_socket(client_socket, server_side=False)  # Secure the socket
+
+        client_socket.connect(("localhost", 5000))  # Connect to the Group Server (port 5000)
         connected_to_group_server = True
+        logging.info("Connected to Group Server")
         return {"status": "success", "message": "Connected to Group Server"}
     except Exception as e:
+        logging.error(f"Group Server connection failed: {e}")
         return {"status": "error", "message": f"Connection failed: {e}"}
 
 
@@ -24,12 +40,14 @@ def send_request(request):
         return {"status": "error", "message": "Not connected to Group Server"}
 
     try:
+        # Send the request to the server
         client_socket.send(json.dumps(request).encode())
-        response = json.loads(client_socket.recv(1024).decode())
+        response = json.loads(client_socket.recv(1024).decode())  # Wait for the server's response
         return response
     except Exception as e:
         connected_to_group_server = False
         client_socket.close()
+        logging.error(f"Request failed: {e}")
         return {"status": "error", "message": f"Request failed: {e}"}
 
 
@@ -38,6 +56,7 @@ def disconnect_from_group_server():
     if connected_to_group_server:
         client_socket.close()
         connected_to_group_server = False
+        logging.info("Disconnected from Group Server")
     return {"status": "success", "message": "Disconnected from Group Server"}
 
 
@@ -70,8 +89,7 @@ def groupServerMenu():
         elif choice == "3" and connected_to_group_server:
             username = input("Enter new username: ")
             token = input("Enter admin token: ")
-            response = send_request(
-                {"action": "create_user", "username": username, "token": token})
+            response = send_request({"action": "create_user", "username": username, "token": token})
         elif choice == "4" and connected_to_group_server:
             group_name = input("Enter group name: ")
             token = input("Enter your token: ")
@@ -99,26 +117,38 @@ def groupServerMenu():
 
         print("Response:", response.get("message", response))
 
+
 def connect_to_file_server():
     global connected_to_file_server, file_socket
     try:
+        # Create the raw socket for the File Server
         file_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        file_socket.connect(("localhost", 6000))
-        connected_to_file_server = True
-        return  {"status": "success", "message": "Connected to File Server"}
-    except Exception as e:
-        return {"status": "error","message":f"File Server connection failed: {e}"}
 
-#disconnects the file server
+        # Wrap the socket with TLS/SSL using SSLContext and the server's certs
+        context = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2)  # Force TLSv1.2 for compatibility
+        context.load_cert_chain(certfile="server.crt", keyfile="server.key")  # Adjust to your cert path
+        file_socket = context.wrap_socket(file_socket, server_side=False)  # Secure the socket
+
+        file_socket.connect(("localhost", 6000))  # Connect to the File Server (port 6000)
+        connected_to_file_server = True
+        logging.info("Connected to File Server")
+        return {"status": "success", "message": "Connected to File Server"}
+    except Exception as e:
+        logging.error(f"File Server connection failed: {e}")
+        return {"status": "error", "message": f"File Server connection failed: {e}"}
+
+
 def disconnect_from_file_server():
     global connected_to_file_server, file_socket
     if connected_to_file_server:
         file_socket.close()
-        connected_to_file_server= False
+        connected_to_file_server = False
+        logging.info("Disconnected from File Server")
     return {"status": "success", "message": "Disconnected from File Server"}
 
+
 def send_file_request(request):
-    global  connected_to_file_server, file_socket
+    global connected_to_file_server, file_socket
     if not connected_to_file_server:
         return {"status": "error", "message": "Not connected to File Server"}
 
@@ -129,7 +159,10 @@ def send_file_request(request):
     except Exception as e:
         connected_to_file_server = False
         file_socket.close()
+        logging.error(f"File Server request failed: {e}")
         return {"status": "error", "message": f"File Server request failed: {e}"}
+
+
 def fileServerMenu():
     print("Welcome to the File Server Client!")
 
@@ -191,6 +224,7 @@ def fileServerMenu():
             continue
 
         print("Response:", response.get("message", response))
+
 
 def main():
     print("Connect To Group Server or File Server")
